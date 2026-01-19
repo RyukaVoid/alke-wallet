@@ -1,0 +1,39 @@
+.bg-1 {
+  background: url("../assets/images/bg-1.png") no-repeat center center;
+  background-size: cover;
+}
+
+.text-blue {
+  color: #2563eb;
+}
+
+.wallet-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.wallet-logo img {
+  width: 70px;
+  height: auto;
+}
+
+.bg-section {
+  min-height: 10vh;
+}
+
+.progress {
+  height: 6px;
+}
+
+.register-section {
+  margin: 0 auto;
+}
+
+
+@media (max-width: 768px) {
+  .wallet-logo img {
+    width: 100px;
+    height: auto;
+  }
+}
