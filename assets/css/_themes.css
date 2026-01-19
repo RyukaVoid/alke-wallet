@@ -1,0 +1,44 @@
+:root {
+    --bs-primary-text-color: #FFFFFF;
+    --bs-primary: #2563eb;
+
+    --bs-secondary-text-color: #FFFFFF;
+    --bs-secondary: #000000;
+
+    --btn-border-radius:0;
+
+    --bs-primary-100: #eff6ff;
+    --bs-primary-200: #dbeafe;
+    --bs-primary-300: #bfdbfe;
+    --bs-primary-400: #93c5fd;
+    --bs-primary-500: #60a5fa;
+    --bs-primary-600: #3b82f6;
+    --bs-primary-700: #2563eb;
+    --bs-primary-800: #1d4ed8;
+    --bs-primary-900: #1e40af;
+    --bs-secondary-100: #e6e6e6;
+    --bs-secondary-200: #cccccc;
+    --bs-secondary-300: #b3b3b3;
+    --bs-secondary-400: #999999;
+    --bs-secondary-500: #666666;
+    --bs-secondary-600: #4d4d4d;
+    --bs-secondary-700: #333333;
+    --bs-secondary-800: #1a1a1a;
+    --bs-secondary-900: #000000;
+}
+
+.bg-primary {
+    background-color: var(--bs-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--bs-secondary) !important;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.text-secondary {
+    color: var(--bs-secondary) !important;
+}
