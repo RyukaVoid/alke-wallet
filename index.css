@@ -13,6 +13,10 @@
   align-items: center;
   gap: 10px;
 }
+.wallet-logo img {
+    width: 160px;
+    height: auto;
+}
 
 .bg-section {
   min-height: 40vh;
@@ -21,4 +25,11 @@
 .main-side {
   max-width: 500px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .wallet-logo img {
+        width: 100px;
+        height: auto;
+    }
 }
