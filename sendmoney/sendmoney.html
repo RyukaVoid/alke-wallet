@@ -34,9 +34,160 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../global.css" />
-    <link rel="stylesheet" href="./deposit.css" />
+    <link rel="stylesheet" href="./sendmoney.css" />
   </head>
   <body>
+    <div class="wrapper">
+      <div class="container p-3">
+        <!-- header -->
+        <div class="row mb-4">
+          <div class="col-12 d-flex align-items-center">
+            <img src="../assets/images/alkewallet-logo.png" alt="Alke-Wallet Logo" width="50" class="me-2" />
+            <h1 class="topbar-heading">Enviar Dinero</h1>
+          </div>
+        </div>
+
+        <!-- bienvenida -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <h1>Enviar dinero</h1>
+            <p class="text-muted m-0">
+              Selecciona un contacto y envía dinero de forma segura.
+            </p>
+          </div>
+        </div>
+
+        <!-- saldo actual -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">
+                  <span id="display-balance"></span>
+                  <i data-lucide="credit-card" class="ms-2"></i>
+                </h2>
+                <p class="card-text text-muted">
+                  Saldo disponible en tu billetera
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- filtro y agregar contacto -->
+        <div class="row mb-3">
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="contact-filter"
+              placeholder="Buscar contacto por nombre, apellido, correo o RUT"
+            />
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addContactModal">
+              <i data-lucide="user-plus" class="me-2"></i>
+              Agregar
+            </button>
+          </div>
+        </div>
+
+        <!-- listado de contactos -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="card rounded">
+              <div class="card-body">
+                <div id="contacts-container">
+                  <p class="text-muted">No tienes contactos agregados.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- boton volver -->
+        <div class="row">
+          <div class="col-12">
+            <a href="../menu/menu.html" class="btn btn-secondary w-100">
+              <i data-lucide="arrow-left" class="me-2"></i>
+              Volver al menú
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal agregar contacto -->
+    <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addContactModalLabel">Agregar contacto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="add-contact-form">
+              <div class="mb-3">
+                <label for="contact-name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="contact-name" required />
+              </div>
+              <div class="mb-3">
+                <label for="contact-lastname" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="contact-lastname" required />
+              </div>
+              <div class="mb-3">
+                <label for="contact-email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="contact-email" required />
+              </div>
+              <div class="mb-3">
+                <label for="contact-rut" class="form-label">RUT</label>
+                <input type="text" class="form-control" id="contact-rut" placeholder="12345678-9" required />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="save-contact">Guardar contacto</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal enviar dinero -->
+    <div class="modal fade" id="sendMoneyModal" tabindex="-1" aria-labelledby="sendMoneyModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendMoneyModalLabel">Enviar dinero</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <p><strong>Enviar a:</strong> <span id="recipient-name"></span></p>
+              <p class="text-muted"><span id="recipient-email"></span></p>
+            </div>
+            <form id="send-money-form">
+              <div class="mb-3">
+                <label for="send-amount" class="form-label">Monto a enviar (CLP)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="send-amount"
+                  placeholder="Ingresa el monto"
+                  min="1"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="confirm-send">Enviar dinero</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- bootstrap js -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -50,6 +201,22 @@
       integrity="sha256-U0gT0dovTUVQOD1dsIea7bL3TC0LiVGt4nfovK6m31I="
       crossorigin="anonymous"
     ></script>
+
+    <!-- jquery -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- start lucide icons -->
+    <script>
+      lucide.createIcons();
+    </script>
+
+    <script src="./sendmoney.js"></script>
+  </body>
+</html>
 
     <!-- jquery -->
     <script
