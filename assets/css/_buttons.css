@@ -12,7 +12,7 @@
 
 .btn-secondary {
     border-radius: var(--btn-border-radius);
-    color: var(--bs-secondary-text-color);
+    color: var(--bs-secondary-text-color) !important;
     background-color: var(--bs-secondary);
     border-color: var(--bs-secondary);
 }

@@ -18,6 +18,7 @@ $(document).ready(function() {
         let passwordBD = localStorage.getItem('password');
 
         if(email === emailBD && password === passwordBD) {
+            localStorage.setItem('isLoggedIn', 'true');
             window.location.href = '../menu/menu.html';
         } else {
             showAlert('Correo o contraseña incorrectos. Inténtalo de nuevo.');
